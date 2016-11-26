@@ -5,6 +5,7 @@
 #include<QRegExp>
 #include<qdebug.h>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -19,93 +20,165 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-float number=0;
-int flag=0;  //用来检测算符的输入 1\2\3\4 --- 加\减\乘\除
 
-//void abc()
-//{
-//    if(flag) ui->lineEdit->clear();
-//    if(ui->lineEdit->text()==NULL)
-//    {
-//        flag=0;
-//        dot=false;
-//    }
-//}
 
-//只要lineedit为空 dot=false  flag=0 ？？？？？？？？？？？？
+
+
+void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n代表要键入的数字
+{
+
+    if (new_num ||ui->lineEdit->text() == "0")
+        ui->lineEdit->clear();
+    QString N=QString("%1").arg(n);
+    ui->lineEdit->setText(ui->lineEdit->text()+N);
+    set_new_num(false);
+}
+
+void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
+{
+    if(!new_num||ui->lineEdit_1->text().isEmpty())
+    {
+        int m=ui->lineEdit->text().length()-1;
+        if(ui->lineEdit->text().at(m)=='.')
+           {
+            QString a=ui->lineEdit->text();
+            a=a.left(a.length()-1);
+            ui->lineEdit->setText(a);    //删除小数点
+        }
+        ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text()+op);
+
+        ui->lineEdit->setText(QString::number(calculate()));
+        set_new_num(true);
+    }
+    else
+    {
+        ui->lineEdit_1->end(false);
+        ui->lineEdit_1->backspace();
+        ui->lineEdit_1->setText(ui->lineEdit_1->text()+op);
+    }
+    cur_op=op;
+    dot=false;
+}
+
+
+// +
+
+void MainWindow::on_pushButton_add_clicked()
+{
+    option("+");
+}
+
+// -
+void MainWindow::on_pushButton_min_clicked()
+{
+    option("-");
+
+}
+// x
+void MainWindow::on_pushButton_mul_clicked()
+{
+    option("*");
+
+}
+// /
+void MainWindow::on_pushButton_dvd_clicked()
+{
+    option("/");
+
+}
+// =
+void MainWindow::on_pushButton_eq_clicked()
+{
+    if(!new_num)
+    {
+         ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
+         ui->lineEdit->setText(QString::number(calculate()));
+    }
+    else
+        ui->lineEdit->setText(QString::number(number));
+    ui->lineEdit_1->clear();
+    cur_op="";
+    dot=false;
+    set_new_num(true);
+
+}
+
+// 计算结果
+double MainWindow::calculate() {
+    if (cur_op == "+")
+        return number += ui->lineEdit->text().toDouble();
+    else if (cur_op == "-")
+        return number -= ui->lineEdit->text().toDouble();
+    else if (cur_op == "*")
+        return number *= ui->lineEdit->text().toDouble();
+    else if (cur_op == "/")
+        return number /= ui->lineEdit->text().toDouble();
+
+    return number = ui->lineEdit->text().toDouble();
+}
+
+void MainWindow::set_new_num(bool new_n)
+{
+    new_num = new_n;
+    if (new_n) {
+        ui->lineEdit->setFrame(false);
+    } else {
+        ui->lineEdit->setFrame(true);
+    }
+}
 
 
 void MainWindow::on_pushButton_1_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-//    if(ui->lineEdit->text()==NULL)
-//    {
-//        flag=0;
-//        dot=false;
-//        number=0;
-//    }
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_1->text());
-
+    judge(1);
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_2->text());
+    judge(2);
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_3->text());
+    judge(3);
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_4->text());
+    judge(4);
 }
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_5->text());
+    judge(5);
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_6->text());
+    judge(6);
 }
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_7->text());
+    judge(7);
 }
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_8->text());
+   judge(8);
 }
 
 void MainWindow::on_pushButton_9_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_9->text());
+   judge(9);
 }
 
 void MainWindow::on_pushButton_0_clicked()
 {
-    if(flag) ui->lineEdit->clear();
-    ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_0->text());
+   judge(0);
 }
 
-
 //小数点
-bool dot=false;  //检测小数点是否已输入
 void MainWindow::on_pushButton_dot_clicked()
 {
     if(ui->lineEdit->text()==NULL)
@@ -117,17 +190,21 @@ void MainWindow::on_pushButton_dot_clicked()
     }
     ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_dot->text());
     dot=true;
+    set_new_num(false);
     return;
 }
 
 //AC
 void MainWindow::on_pushButton_ac_clicked()
 {
-    ui->lineEdit->clear();
+    ui->lineEdit_1->clear();
     ui->lineEdit_hint->clear();
+    ui->lineEdit->setText("0");
+    cur_op="";
     number=0;
-    flag=0;
+    set_new_num(true);
     dot=false;
+
 }
 
 // +/-
@@ -166,35 +243,4 @@ void MainWindow::on_pushButton_per_clicked()
     ui->lineEdit->setText(n);
 }
 
-// +
 
-void MainWindow::on_pushButton_add_clicked()
-{
-    flag=1;
-    float a,b;
-    a=ui->lineEdit->text().toFloat();
-    number+=a;
-    b=ui->lineEdit->text().toFloat();
-    number+=b;
-    qDebug()<<number;///////
-}
-
-// -
-void MainWindow::on_pushButton_min_clicked()
-{
-    float a,b;
-    a=ui->lineEdit->text().toFloat();
-    number-=a;
-
-    b=ui->lineEdit->text().toFloat();
-    number-=b;
-    qDebug()<<number;///////
-}
-// x
-// chu
-// =
-void MainWindow::on_pushButton_eq_clicked()
-{
-    QString n=QString::number(number);
-    ui->lineEdit->setText(n);
-}
