@@ -21,9 +21,6 @@ MainWindow::~MainWindow()
 }
 
 
-
-
-
 void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n代表要键入的数字
 {
 
@@ -115,6 +112,7 @@ double MainWindow::calculate() {
         return number /= ui->lineEdit->text().toDouble();
 
     return number = ui->lineEdit->text().toDouble();
+
 }
 
 void MainWindow::set_new_num(bool new_n)
@@ -183,11 +181,6 @@ void MainWindow::on_pushButton_dot_clicked()
 {
     if(ui->lineEdit->text()==NULL)
         ui->lineEdit->setText("0");
-    else if(dot==true)
-    {
-        ui->lineEdit_hint->setText("请勿重复输入小数点~");
-        return;
-    }
     ui->lineEdit->setText(ui->lineEdit->text()+ui->pushButton_dot->text());
     dot=true;
     set_new_num(false);
@@ -198,7 +191,6 @@ void MainWindow::on_pushButton_dot_clicked()
 void MainWindow::on_pushButton_ac_clicked()
 {
     ui->lineEdit_1->clear();
-    ui->lineEdit_hint->clear();
     ui->lineEdit->setText("0");
     cur_op="";
     number=0;

@@ -25,7 +25,7 @@
       <x>0</x>
       <y>0</y>
       <width>361</width>
-      <height>611</height>
+      <height>551</height>
      </rect>
     </property>
     <property name="font">
@@ -40,7 +40,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabWidgetPage1">
      <attribute name="title">
@@ -452,7 +452,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/icon/backword.png</normaloff>:/icon/backword.png</iconset>
        </property>
        <property name="iconSize">
@@ -483,22 +483,6 @@
         <bool>true</bool>
        </property>
       </widget>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_hint">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>510</y>
-        <width>311</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tabWidgetPage2">
@@ -565,8 +549,9 @@
   <tabstop>pushButton_mul</tabstop>
   <tabstop>pushButton_dvd</tabstop>
   <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_hint</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="icon.qrc"/>
+ </resources>
  <connections/>
 </ui>
