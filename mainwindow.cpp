@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QRegExp regExp("^(-?\\d+)(\\.\\d+)?$");    //浮点数
     ui->lineEdit->setValidator(new QRegExpValidator(regExp, this));
+
 }
 
 MainWindow::~MainWindow()
