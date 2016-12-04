@@ -21,6 +21,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//以下为简单计算器功能实现
 
 void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n代表要键入的数字
 {

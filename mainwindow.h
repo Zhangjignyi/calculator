@@ -55,51 +55,33 @@ private slots:
     void on_pushButton_eq_clicked();   // =
 
     //科学计算器
-    void on_pushButton_10x_clicked();
-    void on_pushButton_20_clicked();
-    void on_pushButton_200_clicked();
-    void on_pushButton_21_clicked();
-    void on_pushButton_22_clicked();
-    void on_pushButton_23_clicked();
-    void on_pushButton_24_clicked();
-    void on_pushButton_25_clicked();
-    void on_pushButton_26_clicked();
-    void on_pushButton_27_clicked();
-    void on_pushButton_28_clicked();
-    void on_pushButton_29_clicked();
-    void on_pushButton_2ac_clicked();
-    void on_pushButton_2add_clicked();
-    void on_pushButton_2bw_clicked();
-    void on_pushButton_2dot_clicked();
-    void on_pushButton_2dvd_clicked();
-    void on_pushButton_2eq_clicked();
-    void on_pushButton_2in_clicked();
-    void on_pushButton_2min_clicked();
-    void on_pushButton_2mul_clicked();
-    void on_pushButton_2per_clicked();
-    void on_pushButton_2x_clicked();
-    void on_pushButton_2bi_clicked();
-    void on_pushButton_cos_clicked();
-    void on_pushButton_cosh_clicked();
-    void on_pushButton_e_clicked();
-    void on_pushButton_ex_clicked();
-    void on_pushButton_l_clicked();
-    void on_pushButton_ln_clicked();
-    void on_pushButton_log10_clicked();
-    void on_pushButton_log2_clicked();
-    void on_pushButton_pi_clicked();
-    void on_pushButton_r_clicked();
-    void on_pushButton_s2_clicked();
-    void on_pushButton_s3_clicked();
-    void on_pushButton_sin_clicked();
-    void on_pushButton_sinh_clicked();
-    void on_pushButton_sy_clicked();
-    void on_pushButton_tan_clicked();
-    void on_pushButton_tanh_clicked();
-    void on_pushButton_x_clicked();
-    void on_pushButton_x2_clicked();
-    void on_pushButton_x3_clicked();
-    void on_pushButton_xy_clicked();
+//    void on_pushButton_10x_clicked();
+
+//    void on_pushButton_2in_clicked();
+
+//    void on_pushButton_2x_clicked();
+//    void on_pushButton_2bi_clicked();
+//    void on_pushButton_cos_clicked();
+//    void on_pushButton_cosh_clicked();
+//    void on_pushButton_e_clicked();
+//    void on_pushButton_ex_clicked();
+//    void on_pushButton_l_clicked();
+//    void on_pushButton_ln_clicked();
+//    void on_pushButton_log10_clicked();
+//    void on_pushButton_log2_clicked();
+//    void on_pushButton_pi_clicked();
+//    void on_pushButton_r_clicked();
+//    void on_pushButton_s2_clicked();
+//    void on_pushButton_s3_clicked();
+//    void on_pushButton_sin_clicked();
+//    void on_pushButton_sinh_clicked();
+//    void on_pushButton_sy_clicked();
+//    void on_pushButton_tan_clicked();
+//    void on_pushButton_tanh_clicked();
+//    void on_pushButton_x_clicked();
+//    void on_pushButton_x2_clicked();
+//    void on_pushButton_x3_clicked();
+//    void on_pushButton_xy_clicked();
 
 
 
