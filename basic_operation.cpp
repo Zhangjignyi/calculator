@@ -66,11 +66,6 @@ double MainWindow::calculate() {
         ui->lineEdit_1->clear();
         cur_op="";
     }
-//    else if(flag==2)
-//    {
-//        return number = pow(number,ui->lineEdit->text().toDouble());
-//        qDebug()<<"lalala";
-//    }
 
     return number = ui->lineEdit->text().toDouble();
 
@@ -101,51 +96,6 @@ void MainWindow::option(const QString& op) //输入算符前判断执行上一�
     cur_op=op;
     dot=false;
 }
-
-
-// +
-
-void MainWindow::on_pushButton_add_clicked()
-{
-    option("+");
-}
-
-// -
-void MainWindow::on_pushButton_min_clicked()
-{
-    option("-");
-
-}
-// x
-void MainWindow::on_pushButton_mul_clicked()
-{
-    option("*");
-
-}
-// /
-void MainWindow::on_pushButton_dvd_clicked()
-{
-    option("/");
-
-}
-// =
-void MainWindow::on_pushButton_eq_clicked()
-{
-    if(!new_num)
-    {
-         ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
-         ui->lineEdit->setText(QString::number(calculate(),'g',12));
-    }
-    else
-        ui->lineEdit->setText(QString::number(number,'g',12));
-    //ui->lineEdit_1->clear();
-    cur_op="=";//cur_op="";
-    dot=false;
-    set_new_num(true);
-
-}
-
-
 
 
 void MainWindow::on_pushButton_1_clicked()

@@ -84,9 +84,9 @@ private slots:
     void on_pushButton_atan_clicked();
 
     //双目运算
-    void on_pushButton_logy_clicked();
-//    void on_pushButton_sy_clicked();
-//    void on_pushButton_xy_clicked();
+//    void on_pushButton_logy_clicked();
+    void on_pushButton_sy_clicked();
+    void on_pushButton_xy_clicked();
 
 //    void on_pushButton_l_clicked();    //左括号
 //    void on_pushButton_r_clicked();    //右括号

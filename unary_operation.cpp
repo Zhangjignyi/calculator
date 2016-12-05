@@ -6,8 +6,8 @@
 #include<qdebug.h>
 #include<math.h>
 
-//阶乘
-int frac(int n)
+//阶乘   目前只支持66以内阶乘
+unsigned long long frac(long int n)
 {
     if(n>1)
         return n*frac(n-1);
@@ -22,12 +22,11 @@ void MainWindow::on_pushButton_x_clicked()
         ui->lineEdit_1->setText("阶乘须是大于0的整数");
     else
     {
-        int a=ui->lineEdit->text().toInt();
-        a=frac(a);
-        QString n=QString::number(a);
-        ui->lineEdit_1->setText(n);
+        unsigned long long a=ui->lineEdit->text().toInt();
+        a=frac(a);        
+        ui->lineEdit->setText(QString::number(a));//
     }
-
+    set_new_num(true);
 }
 
 // 1/x

@@ -6,45 +6,64 @@
 #include<qdebug.h>
 #include<math.h>
 
-void MainWindow::on_pushButton_logy_clicked()
+//双目运算
+
+// +
+void MainWindow::on_pushButton_add_clicked()
+{
+    option("+");
+}
+
+// -
+void MainWindow::on_pushButton_min_clicked()
+{
+    option("-");
+
+}
+
+// x
+void MainWindow::on_pushButton_mul_clicked()
+{
+    option("*");
+
+}
+
+// /
+void MainWindow::on_pushButton_dvd_clicked()
+{
+    option("/");
+
+}
+
+// =
+void MainWindow::on_pushButton_eq_clicked()
+{
+    if(!new_num)
+    {
+         ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
+         ui->lineEdit->setText(QString::number(calculate(),'g',12));
+    }
+    else
+        ui->lineEdit->setText(QString::number(calculate(),'g',12)); //ui->lineEdit->setText(QString::number(number,'g',12));
+    ui->lineEdit_1->clear();
+    cur_op="";
+    dot=false;
+    set_new_num(true);
+
+}
+
+// ^
+void MainWindow::on_pushButton_xy_clicked()
 {
     flag=2;
-//    if(!new_num||ui->lineEdit_1->text().isEmpty())
-//    {
-//        int m=ui->lineEdit->text().length()-1;
-//        if(ui->lineEdit->text().at(m)=='.')
-//           {
-//            QString a=ui->lineEdit->text();
-//            a=a.left(a.length()-1);
-//            ui->lineEdit->setText(a);    //删除小数点
-//        }
-//        ui->lineEdit_1->setText("jhbhjb");
-//        ui->lineEdit->setText(QString::number(calculate(),'g',12));
-//        set_new_num(true);
-//    }
-//    else
-//    {
-//        ui->lineEdit_1->end(false);
-//        ui->lineEdit_1->backspace();
-//        ui->lineEdit_1->setText(ui->lineEdit_1->text()+"log"+QString::number(123));
-
-
-//    }
-//    dot=false;
-//    cur_op="";
     option("^");
 
 }
 
-//double MainWindow::binary(double x,double y)
-//{
-//    switch(flag)
-//    {
-//        case 2:  //logy
-//        {
-//            return log(x)/log(y);
-//            break;
-//        }
-//    }
-//}
+//√
+void MainWindow::on_pushButton_sy_clicked()
+{
+    option("√");
+}
+
 
