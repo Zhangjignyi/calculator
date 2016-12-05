@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    scientific.cpp
+    unary_operation.cpp \
+    binary_operator.cpp \
+    constant.cpp \
+    basic_operation.cpp
 
 HEADERS  += mainwindow.h
 

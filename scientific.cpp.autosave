@@ -1,0 +1,202 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include<QValidator>
+#include<QLineEdit>
+#include<QRegExp>
+#include<qdebug.h>
+#include<math.h>
+
+int frac(int n)   //阶乘
+{
+    if(n>1)
+        return n*frac(n-1);
+    return 1;
+}
+
+void MainWindow::on_pushButton_x_clicked()
+{
+    double num=ui->lineEdit->text().toDouble();
+    int num2=num;
+
+    if(num<0||num==0||num2!=num)
+        ui->lineEdit_1->setText("阶乘须是大于0的整数");
+    else
+    {
+        int a=ui->lineEdit->text().toInt();
+        a=frac(a);
+        QString n=QString::number(a);
+        ui->lineEdit_1->setText(n);
+    }
+
+}
+
+//π
+void MainWindow::on_pushButton_pi_clicked()
+{
+    ui->lineEdit->setText("3.141592653589793");
+    set_new_num(false);
+    flag=1;
+}
+
+//e
+void MainWindow::on_pushButton_e_clicked()
+{
+    ui->lineEdit->setText("2.718281828459045");
+    set_new_num(false);
+    flag=1;
+}
+
+// 1/x
+void MainWindow::on_pushButton_2in_clicked()
+{
+    if(ui->lineEdit->text() == "0")
+        ui->lineEdit_1->setText("0没有倒数");
+    else
+    {
+        double num=ui->lineEdit->text().toDouble();
+        double num1=1/num;
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+    }
+    flag=1;
+}
+
+// 平方
+void MainWindow::on_pushButton_x2_clicked()
+{
+    double num=ui->lineEdit->text().toDouble();
+    double num1=num*num;
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+//立方
+void MainWindow::on_pushButton_x3_clicked()
+{
+    double num=ui->lineEdit->text().toDouble();
+    double num1=num*num*num;
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+//根号
+void MainWindow::on_pushButton_s2_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    if(num<0)
+        ui->lineEdit_1->setText("负数不能开方根");
+    else{
+        double num1=sqrt(num);
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+
+    }
+    flag=1;
+}
+
+//开三次方
+void MainWindow::on_pushButton_s3_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    double num1=pow(num,1.0/3);
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+// 2的幂次
+void MainWindow::on_pushButton_2x_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    double num1=pow(2,num);
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+//10的幂次
+void MainWindow::on_pushButton_10x_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    double num1=pow(10,num);
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+//e的幂次
+void MainWindow::on_pushButton_ex_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    double num1=pow(2.718,num);
+    QString n=QString::number(num1,'g',12);
+    ui->lineEdit->setText(n);
+    flag=1;
+}
+
+// ln
+void MainWindow::on_pushButton_ln_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    if(num<0||num==0)
+    {
+        ui->lineEdit_1->setText("请输入大于0的数");
+        ui->lineEdit->clear();
+    }
+    else
+    {
+        double num1=log(num);
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+    }
+    flag=1;
+}
+
+//log2
+void MainWindow::on_pushButton_log2_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    if(num<0||num==0)
+    {
+        ui->lineEdit_1->setText("请输入大于0的数");
+        ui->lineEdit->clear();
+    }
+    else
+    {
+        double num1=log(num)/log(2);
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+    }
+    flag=1;
+}
+
+//log10
+void MainWindow::on_pushButton_log10_clicked()
+{
+    ui->lineEdit_1->clear();
+    double num=ui->lineEdit->text().toDouble();
+    if(num<0||num==0)
+    {
+        ui->lineEdit_1->setText("请输入大于0的数");
+        ui->lineEdit->clear();
+    }
+    else
+    {
+        double num1=log10(num);
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+    }
+    flag=1;
+}
+
+//cos
+void on_pushButton_cos_clicked();

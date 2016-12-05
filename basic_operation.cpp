@@ -4,6 +4,7 @@
 #include<QLineEdit>
 #include<QRegExp>
 #include<qdebug.h>
+#include<math.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,30 +24,72 @@ MainWindow::~MainWindow()
 
 //以下为简单计算器功能实现
 
+void MainWindow::set_new_num(bool new_n)
+{
+      qDebug()<<"0";
+    new_num = new_n;
+    if (new_n) {
+        ui->lineEdit->setFrame(false);
+    }
+    else {
+        ui->lineEdit->setFrame(true);
+    }
+}
+
 void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n代表要键入的数字
 {
-
-    if (new_num ||ui->lineEdit->text() == "0")
+    if (cur_op == "=")   //若之前输入了=，则清空提示框
+    {
+        ui->lineEdit_1->clear();
+        cur_op="";
+    }
+    if (new_num ||ui->lineEdit->text() == "0"||flag==1)
         ui->lineEdit->clear();
     QString N=QString("%1").arg(n);
     ui->lineEdit->setText(ui->lineEdit->text()+N);
     set_new_num(false);
+    flag=0;
 }
+
+// 计算结果
+double MainWindow::calculate() {
+    if (cur_op == "+")
+        return number += ui->lineEdit->text().toDouble();
+    else if (cur_op == "-")
+        return number -= ui->lineEdit->text().toDouble();
+    else if (cur_op == "*")
+        return number *= ui->lineEdit->text().toDouble();
+    else if (cur_op == "/")
+        return number /= ui->lineEdit->text().toDouble();
+    else if (cur_op == "=")
+    {
+        ui->lineEdit_1->clear();
+        cur_op="";
+    }
+//    else if(flag==2)
+//    {
+//        return number = pow(number,ui->lineEdit->text().toDouble());
+//        qDebug()<<"lalala";
+//    }
+
+    return number = ui->lineEdit->text().toDouble();
+
+}
+
 
 void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
 {
     if(!new_num||ui->lineEdit_1->text().isEmpty())
     {
         int m=ui->lineEdit->text().length()-1;
-        if(ui->lineEdit->text().at(m)=='.')
+        if(ui->lineEdit->text().at(m)=='.')  //小数不完整则删除小数点
            {
             QString a=ui->lineEdit->text();
             a=a.left(a.length()-1);
-            ui->lineEdit->setText(a);    //删除小数点
+            ui->lineEdit->setText(a);
         }
         ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text()+op);
-
-        ui->lineEdit->setText(QString::number(calculate()));
+        ui->lineEdit->setText(QString::number(calculate(),'g',12));
         set_new_num(true);
     }
     else
@@ -91,41 +134,18 @@ void MainWindow::on_pushButton_eq_clicked()
     if(!new_num)
     {
          ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
-         ui->lineEdit->setText(QString::number(calculate()));
+         ui->lineEdit->setText(QString::number(calculate(),'g',12));
     }
     else
-        ui->lineEdit->setText(QString::number(number));
-    ui->lineEdit_1->clear();
-    cur_op="";
+        ui->lineEdit->setText(QString::number(number,'g',12));
+    //ui->lineEdit_1->clear();
+    cur_op="=";//cur_op="";
     dot=false;
     set_new_num(true);
 
 }
 
-// 计算结果
-double MainWindow::calculate() {
-    if (cur_op == "+")
-        return number += ui->lineEdit->text().toDouble();
-    else if (cur_op == "-")
-        return number -= ui->lineEdit->text().toDouble();
-    else if (cur_op == "*")
-        return number *= ui->lineEdit->text().toDouble();
-    else if (cur_op == "/")
-        return number /= ui->lineEdit->text().toDouble();
 
-    return number = ui->lineEdit->text().toDouble();
-
-}
-
-void MainWindow::set_new_num(bool new_n)
-{
-    new_num = new_n;
-    if (new_n) {
-        ui->lineEdit->setFrame(false);
-    } else {
-        ui->lineEdit->setFrame(true);
-    }
-}
 
 
 void MainWindow::on_pushButton_1_clicked()
@@ -230,10 +250,9 @@ void MainWindow::on_pushButton_back_clicked()
 // %
 void MainWindow::on_pushButton_per_clicked()
 {
-    float num=ui->lineEdit->text().toFloat();
-    float num1=num/100;
-
-    QString n=QString::number(num1);
+    double num=ui->lineEdit->text().toDouble();
+    double num1=num/100;
+    QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
 }
 
