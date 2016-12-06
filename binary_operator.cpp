@@ -63,6 +63,7 @@ void MainWindow::on_pushButton_xy_clicked()
 //√
 void MainWindow::on_pushButton_sy_clicked()
 {
+    flag=3;
     option("√");
 }
 

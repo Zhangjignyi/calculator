@@ -26,7 +26,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::set_new_num(bool new_n)
 {
-      qDebug()<<"0";
     new_num = new_n;
     if (new_n) {
         ui->lineEdit->setFrame(false);
@@ -51,6 +50,41 @@ void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n�
     flag=0;
 }
 
+
+void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
+{
+    if(!new_num||ui->lineEdit_1->text().isEmpty())
+    {
+        int m=ui->lineEdit->text().length()-1;
+        if(ui->lineEdit->text().at(m)=='.')  //小数不完整则删除小数点
+           {
+            QString a=ui->lineEdit->text();
+            a=a.left(a.length()-1);
+            ui->lineEdit->setText(a);
+        }
+        if(flag==2)
+        {
+            ui->lineEdit_1->clear();
+            ui->lineEdit_1->setText(QString::number(calculate(),'g',12)+op);
+        }
+        else
+        {
+            ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text()+op);
+            ui->lineEdit->setText(QString::number(calculate(),'g',12));
+        }
+        set_new_num(true);
+    }
+    else
+    {
+        ui->lineEdit_1->end(false);
+        ui->lineEdit_1->backspace();
+        ui->lineEdit_1->setText(ui->lineEdit_1->text()+op);
+    }
+    cur_op=op;
+    dot=false;
+}
+
+
 // 计算结果
 double MainWindow::calculate() {
     if (cur_op == "+")
@@ -66,37 +100,14 @@ double MainWindow::calculate() {
         ui->lineEdit_1->clear();
         cur_op="";
     }
+    else if(cur_op=="^")
+    {
+        return number=pow(number,ui->lineEdit->text().toDouble());
+    }
 
     return number = ui->lineEdit->text().toDouble();
 
 }
-
-
-void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
-{
-    if(!new_num||ui->lineEdit_1->text().isEmpty())
-    {
-        int m=ui->lineEdit->text().length()-1;
-        if(ui->lineEdit->text().at(m)=='.')  //小数不完整则删除小数点
-           {
-            QString a=ui->lineEdit->text();
-            a=a.left(a.length()-1);
-            ui->lineEdit->setText(a);
-        }
-        ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text()+op);
-        ui->lineEdit->setText(QString::number(calculate(),'g',12));
-        set_new_num(true);
-    }
-    else
-    {
-        ui->lineEdit_1->end(false);
-        ui->lineEdit_1->backspace();
-        ui->lineEdit_1->setText(ui->lineEdit_1->text()+op);
-    }
-    cur_op=op;
-    dot=false;
-}
-
 
 void MainWindow::on_pushButton_1_clicked()
 {
