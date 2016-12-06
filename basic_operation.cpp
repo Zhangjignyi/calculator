@@ -53,6 +53,8 @@ void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n�
 
 void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
 {
+    if(Flag==1)
+        ui->lineEdit_1->clear();
     if(!new_num||ui->lineEdit_1->text().isEmpty())
     {
         int m=ui->lineEdit->text().length()-1;
@@ -62,10 +64,21 @@ void MainWindow::option(const QString& op) //输入算符前判断执行上一�
             a=a.left(a.length()-1);
             ui->lineEdit->setText(a);
         }
+
         if(flag==2)
         {
             ui->lineEdit_1->clear();
             ui->lineEdit_1->setText(QString::number(calculate(),'g',12)+op);
+        }
+        else if(flag==3)
+        {
+            ui->lineEdit_1->setText(op+QString::number(number,'g',12));
+        }
+        else if(flag==4)
+        {
+            ui->lineEdit_1->clear();
+            ui->lineEdit_1->setText(op+QString::number(number,'g',12));
+
         }
         else
         {
@@ -101,11 +114,14 @@ double MainWindow::calculate() {
         cur_op="";
     }
     else if(cur_op=="^")
-    {
         return number=pow(number,ui->lineEdit->text().toDouble());
-    }
+    else if(cur_op=="_√")
+        return number=pow(number,1/(ui->lineEdit->text().toDouble()));
+    else if(cur_op=="log_")
+        return number=log10(number)/log10(ui->lineEdit->text().toDouble());
 
     return number = ui->lineEdit->text().toDouble();
+
 
 }
 

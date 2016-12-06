@@ -21,7 +21,8 @@ private:
     double number=0;  //number目前总和
     bool dot=false;  //检测小数点是否已输入
     bool new_num=true; //输入框无数字时为真
-    int flag=0;  // 为1时输入数字前清空显示栏
+    int Flag=0;  // 为1时输入数字前清空显示栏
+    int flag=0;  //标记双目运算
 
 
     void set_new_num(bool new_n);
@@ -84,7 +85,7 @@ private slots:
     void on_pushButton_atan_clicked();
 
     //双目运算
-//    void on_pushButton_logy_clicked();
+    void on_pushButton_logy_clicked();
     void on_pushButton_sy_clicked();
     void on_pushButton_xy_clicked();
 

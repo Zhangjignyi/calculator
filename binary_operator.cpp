@@ -64,7 +64,39 @@ void MainWindow::on_pushButton_xy_clicked()
 void MainWindow::on_pushButton_sy_clicked()
 {
     flag=3;
-    option("√");
+    calculate();
+//    if(number<0||number==0)
+//    {
+//        ui->lineEdit->clear();
+//        ui->lineEdit->setText(QString::number(number,'g',12));
+//        ui->lineEdit_1->setText("请输入正数");
+//        cur_op="";
+//        dot=false;
+//        set_new_num(true);
+//        Flag=1;
+
+//    }
+//    else
+        option("_√");
 }
 
+// logy
+void MainWindow::on_pushButton_logy_clicked()
+{
+    flag=4;
+    calculate();
+    if(number<0||number==0)
+    {
+        ui->lineEdit->clear();
+        ui->lineEdit->setText(QString::number(number,'g',12));
+        ui->lineEdit_1->setText("请输入正数");
+        cur_op="";
+        dot=false;
+        set_new_num(true);
+        Flag=1;
+
+    }
+    else
+        option("log_");
+}
 

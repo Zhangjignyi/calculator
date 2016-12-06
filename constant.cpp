@@ -17,7 +17,7 @@ void MainWindow::on_pushButton_pi_clicked()
     }
     ui->lineEdit->setText(QString::number(M_PI,'g',12));
     set_new_num(false);
-    flag=1;
+    Flag=1;
 }
 
 //e
@@ -30,6 +30,6 @@ void MainWindow::on_pushButton_e_clicked()
     }
     ui->lineEdit->setText(QString::number(exp(1),'g',12));
     set_new_num(false);
-    flag=1;
+    Flag=1;
 }
 

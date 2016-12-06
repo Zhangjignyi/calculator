@@ -41,7 +41,7 @@ void MainWindow::on_pushButton_2in_clicked()
         QString n=QString::number(num1,'g',12);
         ui->lineEdit->setText(n);
     }
-    flag=1;
+    Flag=1;
 }
 
 // 平方
@@ -51,7 +51,7 @@ void MainWindow::on_pushButton_x2_clicked()
     double num1=num*num;
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 //立方
@@ -61,7 +61,7 @@ void MainWindow::on_pushButton_x3_clicked()
     double num1=num*num*num;
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 //根号
@@ -77,7 +77,7 @@ void MainWindow::on_pushButton_s2_clicked()
         ui->lineEdit->setText(n);
 
     }
-    flag=1;
+    Flag=1;
 }
 
 //开三次方
@@ -88,7 +88,7 @@ void MainWindow::on_pushButton_s3_clicked()
     double num1=pow(num,1.0/3);
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 // 2的幂次
@@ -99,7 +99,7 @@ void MainWindow::on_pushButton_2x_clicked()
     double num1=pow(2,num);
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 //10的幂次
@@ -110,7 +110,7 @@ void MainWindow::on_pushButton_10x_clicked()
     double num1=pow(10,num);
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 //e的幂次
@@ -121,7 +121,7 @@ void MainWindow::on_pushButton_ex_clicked()
     double num1=pow(2.718,num);
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 // ln
@@ -136,7 +136,7 @@ void MainWindow::on_pushButton_ln_clicked()
     }
     else
         ui->lineEdit->setText(QString::number(log(num),'g',12));
-    flag=1;
+    Flag=1;
 }
 
 //log2
@@ -151,7 +151,7 @@ void MainWindow::on_pushButton_log2_clicked()
     }
     else
         ui->lineEdit->setText(QString::number(log(num)/log(2),'g',12));
-    flag=1;
+    Flag=1;
 }
 
 //log10
@@ -166,7 +166,7 @@ void MainWindow::on_pushButton_log10_clicked()
     }
     else
         ui->lineEdit->setText(QString::number(log10(num),'g',12));
-    flag=1;
+    Flag=1;
 }
 
 //cos
@@ -175,7 +175,7 @@ void MainWindow::on_pushButton_cos_clicked()
     ui->lineEdit_1->clear();
     double num=cos(ui->lineEdit->text().toDouble());
     ui->lineEdit->setText(QString::number(num,'g',12));
-    flag=1;
+    Flag=1;
 }
 
 //sin
@@ -184,7 +184,7 @@ void MainWindow::on_pushButton_sin_clicked()
     ui->lineEdit_1->clear();
     double num=sin(ui->lineEdit->text().toDouble());
     ui->lineEdit->setText(QString::number(num,'g',12));
-    flag=1;
+    Flag=1;
 }
 
 //tan
@@ -198,7 +198,7 @@ void MainWindow::on_pushButton_tan_clicked()
         double num1=tan(ui->lineEdit->text().toDouble());
         ui->lineEdit->setText(QString::number(num1,'g',12));
     }
-    flag=1;
+    Flag=1;
 }
 
 //acos
@@ -214,7 +214,7 @@ void MainWindow::on_pushButton_acos_clicked()
         QString n=QString::number(num1,'g',12);
         ui->lineEdit->setText(n);
     }
-    flag=1;
+    Flag=1;
 }
 
 //asin
@@ -230,7 +230,7 @@ void MainWindow::on_pushButton_asin_clicked()
         QString n=QString::number(num1,'g',12);
         ui->lineEdit->setText(n);
     }
-    flag=1;
+    Flag=1;
 }
 
 
@@ -242,7 +242,7 @@ void MainWindow::on_pushButton_atan_clicked()
     double num1=180*atan(num)/M_PI;
     QString n=QString::number(num1,'g',12);
     ui->lineEdit->setText(n);
-    flag=1;
+    Flag=1;
 }
 
 
