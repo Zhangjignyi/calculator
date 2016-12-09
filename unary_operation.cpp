@@ -67,7 +67,6 @@ void MainWindow::on_pushButton_x3_clicked()
 //根号
 void MainWindow::on_pushButton_s2_clicked()
 {
-    ui->lineEdit_1->clear();
     double num=ui->lineEdit->text().toDouble();
     if(num<0)
         ui->lineEdit_1->setText("负数不能开方根");
@@ -83,18 +82,21 @@ void MainWindow::on_pushButton_s2_clicked()
 //开三次方
 void MainWindow::on_pushButton_s3_clicked()
 {
-    ui->lineEdit_1->clear();
     double num=ui->lineEdit->text().toDouble();
-    double num1=pow(num,1.0/3);
-    QString n=QString::number(num1,'g',12);
-    ui->lineEdit->setText(n);
+    if(num<0)
+        ui->lineEdit_1->setText("目前只支持正数");
+    else
+    {
+        double num1=pow(num,1.0/3);
+        QString n=QString::number(num1,'g',12);
+        ui->lineEdit->setText(n);
+    }
     Flag=1;
 }
 
 // 2的幂次
 void MainWindow::on_pushButton_2x_clicked()
 {
-    ui->lineEdit_1->clear();
     double num=ui->lineEdit->text().toDouble();
     double num1=pow(2,num);
     QString n=QString::number(num1,'g',12);
@@ -105,7 +107,6 @@ void MainWindow::on_pushButton_2x_clicked()
 //10的幂次
 void MainWindow::on_pushButton_10x_clicked()
 {
-    ui->lineEdit_1->clear();
     double num=ui->lineEdit->text().toDouble();
     double num1=pow(10,num);
     QString n=QString::number(num1,'g',12);
@@ -116,7 +117,7 @@ void MainWindow::on_pushButton_10x_clicked()
 //e的幂次
 void MainWindow::on_pushButton_ex_clicked()
 {
-    ui->lineEdit_1->clear();
+
     double num=ui->lineEdit->text().toDouble();
     double num1=pow(2.718,num);
     QString n=QString::number(num1,'g',12);
@@ -127,7 +128,7 @@ void MainWindow::on_pushButton_ex_clicked()
 // ln
 void MainWindow::on_pushButton_ln_clicked()
 {
-    ui->lineEdit_1->clear();
+
     double num=ui->lineEdit->text().toDouble();
     if(num<0||num==0)
     {
@@ -142,7 +143,7 @@ void MainWindow::on_pushButton_ln_clicked()
 //log2
 void MainWindow::on_pushButton_log2_clicked()
 {
-    ui->lineEdit_1->clear();
+
     double num=ui->lineEdit->text().toDouble();
     if(num<0||num==0)
     {
@@ -157,7 +158,7 @@ void MainWindow::on_pushButton_log2_clicked()
 //log10
 void MainWindow::on_pushButton_log10_clicked()
 {
-    ui->lineEdit_1->clear();
+
     double num=ui->lineEdit->text().toDouble();
     if(num<0||num==0)
     {

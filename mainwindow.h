@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStack>
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +24,15 @@ private:
     bool new_num=true; //输入框无数字时为真
     int Flag=0;  // 为1时输入数字前清空显示栏
     int flag=0;  //标记双目运算
+    bool isleft=false; //按下括号后触发
+    bool is_1=false;
+    bool is_2=false;
+
+    //关于括号表达式
+    QStack<QChar> stack_op;                    //运算符
+    QString postfix_form;                          //存储后缀表达式
+    int left=0;  //左括号个数
+
 
 
     void set_new_num(bool new_n);
@@ -30,8 +40,11 @@ private:
     void judge(int n);
     double calculate(); //计算当前表达式的值
     double binary(double x,double y);  // logy
-
-
+ //()
+    void init();
+    int level(const QChar &op);
+    void postfix();  //转换为后缀表达式
+    void sum();  //计算后缀表达式
 
 
 private slots:
@@ -89,8 +102,8 @@ private slots:
     void on_pushButton_sy_clicked();
     void on_pushButton_xy_clicked();
 
-//    void on_pushButton_l_clicked();    //左括号
-//    void on_pushButton_r_clicked();    //右括号
+    void on_pushButton_l_clicked();    //左括号
+    void on_pushButton_r_clicked();    //右括号
 
 };
 

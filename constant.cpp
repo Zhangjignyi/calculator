@@ -10,6 +10,13 @@
 //π
 void MainWindow::on_pushButton_pi_clicked()
 {
+    ui->pushButton_2add->setEnabled(true);
+    ui->pushButton_2min->setEnabled(true);
+    ui->pushButton_2mul->setEnabled(true);
+    ui->pushButton_2dvd->setEnabled(true);
+    ui->pushButton_2eq->setEnabled(true);
+    if(left>0)
+        ui->pushButton_r->setEnabled(true);
     if (cur_op == "=")   //若之前输入了=，则清空提示框
     {
         ui->lineEdit_1->clear();
@@ -23,6 +30,13 @@ void MainWindow::on_pushButton_pi_clicked()
 //e
 void MainWindow::on_pushButton_e_clicked()
 {
+    ui->pushButton_2add->setEnabled(true);
+    ui->pushButton_2min->setEnabled(true);
+    ui->pushButton_2mul->setEnabled(true);
+    ui->pushButton_2dvd->setEnabled(true);
+    ui->pushButton_2eq->setEnabled(true);
+    if(left>0)
+        ui->pushButton_r->setEnabled(true);
     if (cur_op == "=")   //若之前输入了=，则清空提示框
     {
         ui->lineEdit_1->clear();

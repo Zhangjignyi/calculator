@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QRegExp regExp("^(-?\\d+)(\\.\\d+)?$");    //浮点数
     ui->lineEdit->setValidator(new QRegExpValidator(regExp, this));
-
+    init();
 }
 
 MainWindow::~MainWindow()
@@ -37,9 +37,18 @@ void MainWindow::set_new_num(bool new_n)
 
 void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n代表要键入的数字
 {
+    ui->pushButton_2add->setEnabled(true);
+    ui->pushButton_2min->setEnabled(true);
+    ui->pushButton_2mul->setEnabled(true);
+    ui->pushButton_2dvd->setEnabled(true);
+    ui->pushButton_l->setEnabled(false);
+    if(left==0)     ui->pushButton_2eq->setEnabled(true);
+    if(left>0)      ui->pushButton_r->setEnabled(true);
+
     if (cur_op == "=")   //若之前输入了=，则清空提示框
     {
         ui->lineEdit_1->clear();
+        ui->lineEdit->clear();
         cur_op="";
     }
     if (new_num ||ui->lineEdit->text() == "0"||flag==1)
@@ -48,13 +57,32 @@ void MainWindow::judge(int n)   //输入数字前判断是否已输入算符  n�
     ui->lineEdit->setText(ui->lineEdit->text()+N);
     set_new_num(false);
     flag=0;
+
+    if(left>0) ui->pushButton_2eq->setEnabled(false);
+    else if(left==0) ui->pushButton_r->setEnabled(false);
 }
 
 
 void MainWindow::option(const QString& op) //输入算符前判断执行上一步算符
 {
-    if(Flag==1)
-        ui->lineEdit_1->clear();
+
+    //算符后可以有数字和 （
+    ui->pushButton_20->setEnabled(true);
+    ui->pushButton_21->setEnabled(true);
+    ui->pushButton_22->setEnabled(true);
+    ui->pushButton_23->setEnabled(true);
+    ui->pushButton_24->setEnabled(true);
+    ui->pushButton_25->setEnabled(true);
+    ui->pushButton_26->setEnabled(true);
+    ui->pushButton_27->setEnabled(true);
+    ui->pushButton_28->setEnabled(true);
+    ui->pushButton_29->setEnabled(true);
+    ui->pushButton_2dot->setEnabled(true);
+    ui->pushButton_l->setEnabled(true);
+    //算符后不可以有 ）和 =
+    ui->pushButton_r->setEnabled(false);
+    ui->pushButton_2eq->setEnabled(false);
+
     if(!new_num||ui->lineEdit_1->text().isEmpty())
     {
         int m=ui->lineEdit->text().length()-1;
@@ -65,12 +93,7 @@ void MainWindow::option(const QString& op) //输入算符前判断执行上一�
             ui->lineEdit->setText(a);
         }
 
-        if(flag==2)
-        {
-            ui->lineEdit_1->clear();
-            ui->lineEdit_1->setText(QString::number(calculate(),'g',12)+op);
-        }
-        else if(flag==3)
+        if(flag==3)
         {
             ui->lineEdit_1->setText(op+QString::number(number,'g',12));
         }
@@ -78,12 +101,20 @@ void MainWindow::option(const QString& op) //输入算符前判断执行上一�
         {
             ui->lineEdit_1->clear();
             ui->lineEdit_1->setText(op+QString::number(number,'g',12));
-
         }
         else
         {
+            if(cur_op=="=")
+            {
+                ui->lineEdit_1->setText(ui->lineEdit->text()+op);
+                ui->lineEdit->clear();
+                cur_op="";
+            }
+            else
+            {
             ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text()+op);
             ui->lineEdit->setText(QString::number(calculate(),'g',12));
+            }
         }
         set_new_num(true);
     }
@@ -95,6 +126,7 @@ void MainWindow::option(const QString& op) //输入算符前判断执行上一�
     }
     cur_op=op;
     dot=false;
+    ui->lineEdit->clear();
 }
 
 
@@ -111,10 +143,10 @@ double MainWindow::calculate() {
     else if (cur_op == "=")
     {
         ui->lineEdit_1->clear();
+        ui->lineEdit_1->setText(ui->lineEdit->text());  //
+        ui->lineEdit->clear();
         cur_op="";
     }
-    else if(cur_op=="^")
-        return number=pow(number,ui->lineEdit->text().toDouble());
     else if(cur_op=="_√")
         return number=pow(number,1/(ui->lineEdit->text().toDouble()));
     else if(cur_op=="log_")
@@ -189,13 +221,12 @@ void MainWindow::on_pushButton_dot_clicked()
 //AC
 void MainWindow::on_pushButton_ac_clicked()
 {
+    init();
+    isleft=false;
+    ui->pushButton_200->setEnabled(true);
     ui->lineEdit_1->clear();
     ui->lineEdit->setText("0");
     cur_op="";
-    number=0;
-    set_new_num(true);
-    dot=false;
-
 }
 
 // +/-

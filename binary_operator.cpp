@@ -11,12 +11,14 @@
 // +
 void MainWindow::on_pushButton_add_clicked()
 {
+    is_1=true;  //有加号
     option("+");
 }
 
 // -
 void MainWindow::on_pushButton_min_clicked()
 {
+    is_1=true;  //有减号
     option("-");
 
 }
@@ -24,6 +26,7 @@ void MainWindow::on_pushButton_min_clicked()
 // x
 void MainWindow::on_pushButton_mul_clicked()
 {
+    is_2=true;  //记录有乘号
     option("*");
 
 }
@@ -31,6 +34,7 @@ void MainWindow::on_pushButton_mul_clicked()
 // /
 void MainWindow::on_pushButton_dvd_clicked()
 {
+    is_2=true; //记录有除号
     option("/");
 
 }
@@ -38,17 +42,32 @@ void MainWindow::on_pushButton_dvd_clicked()
 // =
 void MainWindow::on_pushButton_eq_clicked()
 {
-    if(!new_num)
+    if(isleft||(is_1&&is_2))
     {
-         ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
-         ui->lineEdit->setText(QString::number(calculate(),'g',12));
+
+        ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
+        postfix();
+        sum();
+        init();
+        isleft=false;
+        Flag=1;
     }
     else
-        ui->lineEdit->setText(QString::number(calculate(),'g',12)); //ui->lineEdit->setText(QString::number(number,'g',12));
-    ui->lineEdit_1->clear();
-    cur_op="";
-    dot=false;
-    set_new_num(true);
+    {
+
+        if(!new_num)
+        {
+
+            ui->lineEdit_1->setText(ui->lineEdit_1->text()+ui->lineEdit->text());
+            ui->lineEdit->setText(QString::number(calculate(),'g',12));
+        }
+        else
+            ui->lineEdit->setText(QString::number(calculate(),'g',12));
+        ui->lineEdit_1->clear();
+        is_1=false;
+        is_2=false;
+    }
+    cur_op="=";  ////
 
 }
 
@@ -56,6 +75,7 @@ void MainWindow::on_pushButton_eq_clicked()
 void MainWindow::on_pushButton_xy_clicked()
 {
     flag=2;
+    isleft=true;
     option("^");
 
 }

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>625</width>
+    <width>406</width>
     <height>656</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -123,7 +123,7 @@
      <property name="currentIndex">
       <number>1</number>
      </property>
-     <widget class="QWidget" name="tabWidgetPage1">
+     <widget class="QWidget" name="tabWidgetPage_basic">
       <attribute name="title">
        <string>标准型</string>
       </attribute>
@@ -512,7 +512,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="icon.qrc">
           <normaloff>:/icon/backword.png</normaloff>:/icon/backword.png</iconset>
         </property>
         <property name="iconSize">
@@ -524,7 +524,7 @@
        </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabWidgetPage2">
+     <widget class="QWidget" name="tabWidgetPage_scientific">
       <attribute name="title">
        <string>科学型</string>
       </attribute>
@@ -1499,7 +1499,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="icon.qrc">
           <normaloff>:/icon/backword.png</normaloff>:/icon/backword.png</iconset>
         </property>
         <property name="iconSize">
@@ -2105,7 +2105,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>625</width>
+     <width>406</width>
      <height>22</height>
     </rect>
    </property>
@@ -2145,37 +2145,23 @@
   <tabstop>pushButton_dvd</tabstop>
   <tabstop>lineEdit</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="icon.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>pushButton_21</sender>
+   <sender>pushButton_24</sender>
    <signal>clicked()</signal>
-   <receiver>pushButton_1</receiver>
+   <receiver>pushButton_4</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>77</x>
-     <y>495</y>
+     <y>485</y>
     </hint>
     <hint type="destinationlabel">
      <x>92</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_22</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>137</x>
-     <y>525</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>480</y>
+     <y>410</y>
     </hint>
    </hints>
   </connection>
@@ -2196,18 +2182,34 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_24</sender>
+   <sender>pushButton_28</sender>
    <signal>clicked()</signal>
-   <receiver>pushButton_4</receiver>
+   <receiver>pushButton_8</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>445</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_21</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_1</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>77</x>
-     <y>485</y>
+     <y>495</y>
     </hint>
     <hint type="destinationlabel">
      <x>92</x>
-     <y>410</y>
+     <y>450</y>
     </hint>
    </hints>
   </connection>
@@ -2244,22 +2246,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_28</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_8</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>137</x>
-     <y>445</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>340</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_27</sender>
    <signal>clicked()</signal>
    <receiver>pushButton_7</receiver>
@@ -2272,6 +2258,150 @@
     <hint type="destinationlabel">
      <x>92</x>
      <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_22</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2mul</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_mul</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2per</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_per</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2bw</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_back</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>445</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_200</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_00</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2ac</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_ac</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>485</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2dvd</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_dvd</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>550</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2eq</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_eq</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>550</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2dot</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_dot</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>550</y>
     </hint>
    </hints>
   </connection>
@@ -2308,70 +2438,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2dot</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_dot</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>137</x>
-     <y>565</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>550</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2eq</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_eq</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>197</x>
-     <y>565</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>232</x>
-     <y>550</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2dvd</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_dvd</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>257</x>
-     <y>565</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>302</x>
-     <y>550</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2mul</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_mul</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>257</x>
-     <y>525</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>302</x>
-     <y>480</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_2min</sender>
    <signal>clicked()</signal>
    <receiver>pushButton_min</receiver>
@@ -2400,70 +2466,6 @@
     <hint type="destinationlabel">
      <x>302</x>
      <y>340</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2bw</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_back</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>317</x>
-     <y>445</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>302</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2per</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_per</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>317</x>
-     <y>565</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>232</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_200</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_00</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>317</x>
-     <y>525</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2ac</sender>
-   <signal>clicked()</signal>
-   <receiver>pushButton_ac</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>317</x>
-     <y>485</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>92</x>
-     <y>270</y>
     </hint>
    </hints>
   </connection>

@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     unary_operation.cpp \
     binary_operator.cpp \
     constant.cpp \
-    basic_operation.cpp
+    basic_operation.cpp \
+    expression.cpp
 
 HEADERS  += mainwindow.h
 
